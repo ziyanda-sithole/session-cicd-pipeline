@@ -60,5 +60,7 @@ jobs:
     steps:
       - name: hello from pipeline
         run: echo "Hello from the pipeline!"
-      - name: not my laptop
-        run: echo "This ran on a Github runner, not my laptop."
+      - name: exit
+        run: exit 1
+      - name: invalid line
+        run: echo "you will not see this line"
