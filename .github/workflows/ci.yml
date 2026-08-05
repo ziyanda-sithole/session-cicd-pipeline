@@ -69,7 +69,8 @@ jobs:
       - name: install java
         run: actions/setup-java@v4
         with:
-          distribution: terumin
+          distribution: temurin
           java-version: "21"
+          cache: maven
       - name: run tests
         run: mvn test
