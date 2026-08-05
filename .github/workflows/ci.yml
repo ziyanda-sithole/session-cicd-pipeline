@@ -86,3 +86,8 @@ jobs:
           java-version: "21"
       - name: package
         run: mvn package -DskipTests
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-jar
+          path: target/*-jar-with-dependencies.jar
