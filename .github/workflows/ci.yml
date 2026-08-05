@@ -50,17 +50,26 @@
 
 
 # Our very first workflow. One job that just prints a message.
-name: First Pipeline
+name: CI Pipeline
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  say-hello:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: hello from pipeline
-        run: echo "Hello from the pipeline!"
-      - name: exit
-        run: exit 1
-      - name: invalid line
-        run: echo "you will not see this line"
+      - name: put code on the runner
+        uses: actions/checkout@v4
+      - name: install java
+        run: actions/setup-java@v4
+        with:
+          distribution: terumin
+          java-version: "21"
+      - name: run tests
+        run: mvn test
